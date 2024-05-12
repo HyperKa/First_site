@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Доставка</title>
+  <style>
+    /* Стили для всего тела */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #e6f2ff;
+    }
+
+    /* Стили для контейнера */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Стили для формы */
+    .form-container {
+      width: 45%;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Стили для таблицы заказов */
+    .orders-container {
+      margin-top: -30px;
+      margin-bottom: 100px; /* Установите желаемое значение отступа между таблицей и другими элементами */
+      max-height: 100px; /* Установите желаемую максимальную высоту */
+      margin-left: 0px;
+      padding: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="orders-container">
+      <h3>Данные для доставки</h3>
+      <h3></h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Номер заказа</th>
+            <th>Адрес доставки</th>
+            <th>Время доставки</th>
+            <th>Особые условия</th>
+            <th>Приоритет доставки</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.num }}</td>
+            <td>{{ user.adress }}</td>
+            <td>{{ user.time }}</td>
+            <td>{{ user.conditions }}</td>
+            <td>{{ user.priority }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="form-container">
+      <div class="form-group">
+        <label for="num">Номер заказа</label>
+        <input name="num" id="num" [(ngModel)]="num" />
+      </div>
+      <div class="form-group">
+        <label for="type">Адрес заказчика</label>
+        <input name="adress" id="adress" [(ngModel)]="adress" />
+      </div>
+      <div class="form-group">
+        <label for="mark">Время доставки</label>
+        <input name="time" id="time" [(ngModel)]="time" />
+      </div>
+      <div class="form-group">
+        <label for="num_age">Особые условия</label>
+        <input name="conditions" id="conditions" [(ngModel)]="conditions" />
+      </div>
+      <div class="form-group">
+        <label for="priority">Приоритет доставки</label>
+        <select id="priority" [(ngModel)]="priority">
+          <option value="first">срочная доставка</option>
+          <option value="second">быстрая доставка</option>
+          <option value="third">обычный режим доставки</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button (click)="addUser()">Добавить</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

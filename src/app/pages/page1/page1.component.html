@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заказы</title>
+  <style>
+    /* Стили для всего тела */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #e6f2ff;
+    }
+
+    /* Стили для контейнера */
+    .container {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Стили для формы */
+    .form-container {
+      width: 45%;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Стили для таблицы заказов */
+    .orders-container {
+      margin-top: -600px;
+      margin-bottom: 100px; /* Установите желаемое значение отступа между таблицей и другими элементами */
+      max-height: 100px; /* Установите желаемую максимальную высоту */
+      
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="orders-container">
+      <h3>Заказы</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Номер заказа</th>
+            <th>Тип автомобиля</th>
+            <th>Марка</th>
+            <th>Возраст автомобиля</th>
+            <th>Топливо</th>
+            <th>Цвет</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.num }}</td>
+            <td>{{ user.type }}</td>
+            <td>{{ user.mark }}</td>
+            <td>{{ user.num_age }}</td>
+            <td>{{ user.oil }}</td>
+            <td>{{ user.color }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="form-container">
+      <div class="form-group">
+        <label for="num">Номер заказа</label>
+        <input name="num" id="num" [(ngModel)]="num" />
+      </div>
+      <div class="form-group">
+        <label for="type">Тип автомобиля</label>
+        <select id="type" [(ngModel)]="type">
+          <option value="passenger">Легковой</option>
+          <option value="truck">Грузовой</option>
+          <option value="special">Специальный</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mark">Марка</label>
+        <select id="mark" [(ngModel)]="mark">
+          <option value="mersedez">Mersedez</option>
+          <option value="toyota">Toyota</option>
+          <option value="kia">Kia</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="num_age">Возраст автомобиля</label>
+        <input name="num_age" id="num_age" [(ngModel)]="num_age" />
+      </div>
+      <div class="form-group">
+        <label for="oil">Топливо</label>
+        <select id="oil" [(ngModel)]="oil">
+          <option value="diesel">Дизель</option>
+          <option value="petrol">Бензин</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="color">Цвет</label>
+        <select id="color" [(ngModel)]="color">
+          <option value="red">Красный</option>
+          <option value="pink">Розовый</option>
+          <option value="blue">Синий</option>
+          <option value="green">Зеленый</option>
+          <option value="yellow">Желтый</option>
+          <option value="dirty">Бежевый</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button (click)="addUser()">Добавить</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

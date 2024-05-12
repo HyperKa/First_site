@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Навигационная панель</title>
+  <style>
+    /* CSS */
+  </style>
+</head>
+<body>
+  <div style="background-color: #f0f8ff;">
+    <h3>Навигационная панель</h3>
+    <div style="display: flex; align-items: center;">
+      <a href="/" style="display: flex; align-items: center; justify-content: center; padding: 10px 15px; border-radius: 5px; background-color: #e0e0e0; font-family: 'Arial', sans-serif; font-size: 16px; color: #333; text-decoration: none;">Подбор автомобиля</a>
+      <a href="/page2" style="display: flex; align-items: center; justify-content: center; padding: 10px 15px; border-radius: 5px; background-color: #e0e0e0; font-family: 'Arial', sans-serif; font-size: 16px; color: #333; text-decoration: none; margin-left: 20px;">Данные для доставки</a>
+      <a href="/page3" style="display: flex; align-items: center; justify-content: center; padding: 10px 15px; border-radius: 5px; background-color: #e0e0e0; font-family: 'Arial', sans-serif; font-size: 16px; color: #333; text-decoration: none; margin-left: 20px;">Личные данные</a>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://unpkg.com/vue-router@4.1.2"></script>
+  <script>
+    const routes = [
+      { path: '/', component: Home },
+      { path: '/page2', component: Page2 },
+      { path: '/page3', component: Page3 },
+    ];
+
+    const router = new VueRouter({
+      routes
+    });
+
+    const app = new Vue({
+      router,
+      components: {
+        Home,
+        Page2,
+        Page3
+      }
+    }).$mount('#app');
+  </script>
+</body>
+</html>
